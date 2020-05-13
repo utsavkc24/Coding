@@ -1,0 +1,55 @@
+class Solution {
+    public String removeKdigits(String num, int k) {
+        int size = num.length();
+        
+        //Example 3
+        if(size == k)
+            return "0";
+        
+        //put every num in the stack 
+        Stack<Character> stack = new Stack();
+        
+        int current = 0;
+         
+        while(current < size){
+            
+            //Greedy algorithm 
+            while(k > 0 && !stack.isEmpty() && stack.peek() > num.charAt(current)){
+                stack.pop();
+                k--;
+            }
+            
+            
+             stack.push(num.charAt(current));
+            current++;
+        }
+        
+        //repeating digit 1111
+        
+        while(k > 0){
+            stack.pop();
+            k--;
+        }
+           
+
+        
+        //Create a stringbuilder
+        
+        StringBuilder sb = new StringBuilder();
+        
+        while(!stack.isEmpty()){
+            char current_char = stack.pop();
+            sb.append(current_char);
+        }
+        
+        sb.reverse();
+        
+        // remove all leading zeros
+        while(sb.length() > 1 && sb.charAt(0) == '0'){
+            sb.deleteCharAt(0);
+        }
+            
+        
+        return sb.toString();
+    }
+}
