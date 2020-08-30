@@ -1,0 +1,26 @@
+/*Left rotate an Array*/
+import java.util.*;
+ public class Random {
+     public static void main(String[] args) {
+         int arr[] = {1,2,3,4,5,6};
+         System.out.print(Arrays.toString(rotateArray(arr,2,arr.length)));
+    }
+  public static void reverseArray(int arr[],int low, int high){
+         while (low < high){
+             int temp = arr[low];
+             arr[low] = arr[high];
+             arr[high] = temp;
+             low++;
+             high--;
+         }
+  }
+  public static int[] rotateArray(int arr[], int part, int length){
+         reverseArray(arr,0,part - 1);
+         reverseArray(arr,part,length - 1);
+         reverseArray(arr,0,length - 1);
+
+         return arr;
+  }
+
+}
+
