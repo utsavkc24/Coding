@@ -1,0 +1,22 @@
+/*Equilibrium point in Array*/
+import java.util.*;
+ public class Random {
+     public static void main(String[] args) {
+         int[] arr = {3,4,8,-9,20,6};
+         int sum = 0;
+         int l_sum = 0;
+         for (int value : arr) {
+             sum += value;
+         }
+         for(int i = 0; i < arr.length; i++){
+             sum -= arr[i];
+             if(l_sum == sum){
+                 System.out.print("Yes" + " " +arr[i]);
+                 break;
+             }
+             l_sum += arr[i];
+         }
+     }
+
+}
+
